@@ -1,0 +1,135 @@
+
+
+UNF - Mapping semua field
+Transaction
+- TransactionID 
+- TransactionDate 
+- PaymentType
+- CustomerID 
+- CustomerName 
+- CustomerAddress
+- Sub Tabel Transaksi
+	- No 
+	- ItemID 
+	- ItemName 
+	- ItemPrice 
+	- SellQuantity 
+	- Subtotal
+	- Total 
+- StaffName 
+- StaffPosition
+
+
+1NF 
+
+How To:
+- Hapus kolom yang didapatkan dari hasil perhitungan (umumnya hasil generate rumus)
+- Hapus kolom yang tidak di perlukan (tidak perlu disimpan database)
+- Pisahkan data yang berulang (Data di sub tabel -> Buat Tabel Baru jadi detail,  untuk data parent diubah menjadi header)
+- Tambahkan primary key (buat menjadi unik)
+
+Praktek:
+- Hapus kolom yang didapatkan dari hasil perhitungan 
+(SubTotal,Total)
+- Hapus kolom yang tidak di perlukan  
+(No)
+- Pisahkan data yang berulang
+(Transaction -> HeaderTransaction, Sub Tabel -> New Table [DetailTransaction]) 
+- Tambahkan primary key
+
+
+HeaderTransaction
+- TransactionID [PK]
+- TransactionDate 
+- PaymentType
+- CustomerID 
+- CustomerName 
+- CustomerAddress
+- StaffName 
+- StaffPosition
+
+DetailTransaction
+- TransactionID [PK][FK]
+- ItemID [PK]
+- ItemName 
+- ItemPrice 
+- SellQuantity 
+
+
+2NF - Partial Dependency
+
+How To:
+- Pisahkan data yang bergantung pada sebagian PK
+
+Praktek:
+HeaderTransaction
+- TransactionID [PK]
+- TransactionDate 
+- PaymentType
+- CustomerID 
+- CustomerName 
+- CustomerAddress
+- StaffName 
+- StaffPosition
+
+DetailTransaction
+- TransactionID [PK][FK]
+- ItemID [PK][FK]
+- SellQuantity 
+
+Item (Tabel baru karena bergantung)
+- ItemID [PK]
+- ItemName 
+- ItemPrice 
+
+
+3NF - Transitive Dependency
+
+How To:
+- Lihat dari semua tabel, apakah ada tabel yang bergantungan dan bisa dipisah
+
+Praktek:
+Tabel baru 
+(Customer, Staff, StaffPosition, ItemType)
+
+
+HeaderTransaction
+- TransactionID [PK]
+- TransactionDate 
+- PaymentType
+- CustomerID [FK]
+- StaffID [FK]
+
+DetailTransaction
+- TransactionID [PK][FK]
+- ItemID [PK][FK]
+- SellQuantity 
+
+Item
+- ItemID [PK]
+- ItemName 
+- ItemTypeID [FK]
+- ItemPrice 
+
+ItemType
+- ItemTypeID [PK]
+- ItemTypeName
+
+Customer
+- CustomerID [PK]
+- CustomerName 
+- CustomerAddress
+- CustomerGender 
+- CustomerPhone 
+- CustomerEmail 
+- CustomerDOB 
+- CustomerPassword
+
+Staff
+- StaffID [PK]
+- StaffName 
+- StaffPositionID [FK]
+
+StaffPosition 
+- StaffPositionID [PK]
+- StaffPositionName

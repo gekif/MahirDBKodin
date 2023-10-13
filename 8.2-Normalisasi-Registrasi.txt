@@ -1,0 +1,132 @@
+UNF
+
+Registrasi
+- RegistrationID 
+- RegistrationDate 
+- CustomerID 
+- CustomerName 
+- CustomerGender 
+- CustomerAddress 
+- CustomerPhone 
+- CustomerEmail 
+- CustomerDOB
+- StaffName 
+- StaffPosition
+
+
+1NF
+
+Registrasi
+- RegistrationID [PK]
+- RegistrationDate 
+- CustomerID
+- CustomerName 
+- CustomerGender 
+- CustomerAddress 
+- CustomerPhone 
+- CustomerEmail 
+- CustomerDOB
+- StaffName
+- StaffPosition
+
+
+2NF 
+
+Registrasi
+- RegistrationID [PK]
+- RegistrationDate 
+- CustomerID [FK]
+- StaffID [FK]
+
+Customer 
+- CustomerID [[K]
+- CustomerName 
+- CustomerGender 
+- CustomerAddress 
+- CustomerPhone 
+- CustomerEmail 
+- CustomerDOB
+
+Staff
+- StaffID [PK]
+- StaffName
+- StaffPositionID [FK]
+
+StaffPosition 
+- StaffPositionID [PK] 
+- StaffPositionName
+
+3NF
+Registrasi
+- RegistrationID [PK]
+- RegistrationDate 
+- CustomerID [FK]
+- StaffID [FK]
+
+Customer 
+- CustomerID [[K]
+- CustomerName 
+- CustomerGender 
+- CustomerAddress 
+- CustomerPhone 
+- CustomerEmail 
+- CustomerDOB
+
+Staff
+- StaffID [PK]
+- StaffName
+- StaffPositionID [FK]
+
+StaffPosition 
+- StaffPositionID [PK] 
+- StaffPositionName
+
+
+Penggabungan Dengan Pertama 
+
+HeaderTransaction
+- TransactionID [PK]
+- TransactionDate 
+- PaymentType
+- CustomerID [FK]
+- StaffID [FK]
+
+DetailTransaction
+- TransactionID [PK][FK]
+- ItemID [PK][FK]
+- SellQuantity 
+
+Item
+- ItemID [PK]
+- ItemName 
+- ItemTypeID [FK]
+- ItemPrice 
+
+ItemType
+- ItemTypeID [PK]
+- ItemTypeName
+
+Customer
+- CustomerID [PK]
+- CustomerName 
+- CustomerAddress
+- CustomerGender 
+- CustomerPhone 
+- CustomerEmail 
+- CustomerDOB 
+- CustomerPassword
+
+Staff
+- StaffID [PK]
+- StaffName 
+- StaffPositionID [FK]
+
+StaffPosition 
+- StaffPositionID [PK]
+- StaffPositionName
+
+Registrasi
+- RegistrationID [PK]
+- RegistrationDate 
+- CustomerID [FK]
+- StaffID [FK]
